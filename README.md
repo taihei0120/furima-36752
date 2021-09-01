@@ -48,15 +48,15 @@
 
 
  ## addresses テーブル
-| Column       | Type       | Options                        |
-| -------------| ---------- | ------------------------------ |
-| postal_code  | string     | null: false                    |
-| city_id      | integer    | null: false                    |
-| town         | string     | null: false                    |
-| home_number  | string     | null: false                    |
-| building     | string     |                                |
-| telephone    | string     | null: false                    |
-| order        | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| -----------------| ---------- | ------------------------------ |
+| postal_code      | string     | null: false                    |
+| delivery_from_id | integer    | null: false                    |
+| town             | string     | null: false                    |
+| home_number      | string     | null: false                    |
+| building         | string     |                                |
+| telephone        | string     | null: false                    |
+| order            | references | null: false, foreign_key: true |
 
 ### Association
  - belongs_to :order
