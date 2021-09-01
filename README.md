@@ -40,19 +40,18 @@
 | ---------| ---------- | ------------------------------ |
 | user     | references | null: false, foreign_key: true |
 | item     | references | null: false, foreign_key: true |
-| address  | references | null: false, foreign_key: true |
 
 ### Association
  - belongs_to :user
  - belongs_to :item
- - belongs_to :address
+ - has_one :address
 
 
  ## addresses テーブル
 | Column       | Type       | Options                        |
 | -------------| ---------- | ------------------------------ |
 | postal_code  | string     | null: false                    |
-| city         | string     | null: false                    |
+| city_id      | integer    | null: false                    |
 | town         | string     | null: false                    |
 | home_number  | string     | null: false                    |
 | building     | string     |                                |
@@ -60,4 +59,4 @@
 | order        | references | null: false, foreign_key: true |
 
 ### Association
- - has_one :order
+ - belongs_to :order
