@@ -1,24 +1,60 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type      | Options                   |
+| -------------------| --------- | ------------------------- |
+| nickname           | string    | null: false               |
+| email              | string    | null: false, unique: true |
+| encrypted_password | string    | null: false               |
+| first_name_zenkaku | string    | null: false               |
+| first_name_kana    | string    | null: false               |
+| last_name_zenkaku  | string    | null: false               |
+| last_name_kana     | string    | null: false               |
+| birthday_year      | string    | null: false               |
+| birthday_month     | string    | null: false               |
+| birthday_day       | string    | null: false               |
 
-* Ruby version
 
-* System dependencies
+### Association
+ - has_many :items
+ - has_many :orders
 
-* Configuration
 
-* Database creation
+## items テーブル
 
-* Database initialization
+| Column               | Type      | Options                        |
+| ---------------------| --------- | ------------------------------ |
+| product_image        | image     | ActiveStorage                  |
+| product_name         | string    | null: false                    |
+| product_description  | text      | null: false                    |
+| product_category     | string    | null: false                    |
+| product_condition    | string    | null: false                    |
+| delivery_fee         | string    | null: false                    |
+| delivery_from        | string    | null: false                    |
+| delivery_day         | string    | null: false                    |
+| price                | string    | null: false                    |
+| user                 | reference | null: false, foreign_key: true |
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+ - belongs_to :user
+ - belongs_to :order
 
-* Deployment instructions
 
-* ...
+## orders テーブル
+
+| Column       | Type      | Options                        |
+| -------------| --------- | ------------------------------ |
+| postal_code  | string    | null: false                    |
+| city         | string    | null: false                    |
+| town         | string    | null: false                    |
+| home_number  | string    | null: false                    |
+| building     | string    |                                |
+| telephone    | string    | null: false                    |
+| user         | reference | null: false, foreign_key: true |
+| item         | reference | null: false, foreign_key: true |
+
+### Association
+ - belongs_to :user
+ - belongs_to :item
