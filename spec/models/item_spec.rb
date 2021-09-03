@@ -28,7 +28,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Product category can't be blank")
       end
       it "product_category_idが1では登録できない" do
-        @item.product_category_id = '1'
+        @item.product_category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Product category must be other than 1")
       end
@@ -38,7 +38,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Product condition can't be blank")
       end
       it "product_condition_idが1では登録できない" do
-        @item.product_condition_id = '1'
+        @item.product_condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Product condition must be other than 1")
       end
@@ -48,7 +48,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
       end
       it "delivery_fee_idが1では登録できない" do
-        @item.delivery_fee_id = '1'
+        @item.delivery_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery fee must be other than 1")
       end
@@ -58,7 +58,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Delivery from can't be blank")
       end
       it "delivery_from_idが1では登録できない" do
-        @item.delivery_from_id = '1'
+        @item.delivery_from_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery from must be other than 1")
       end
@@ -68,7 +68,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Delivery day can't be blank")
       end
       it "delivery_day_idが1では登録できない" do
-        @item.delivery_day_id = '1'
+        @item.delivery_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery day must be other than 1")
       end
