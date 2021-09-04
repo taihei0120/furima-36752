@@ -22,17 +22,23 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
-    unless user_signed_in? && current_user.id == @item.user_id
-      redirect_to action: :index
-    end
+      if user_signed_in?
+        unless current_user.id == @item.user_id
+          redirect_to action: :index
+        end
+      else
+        render "devise/sessions/new"
+      end
   end
+
+  #unless user_signed_in? && current_user.id == @item.user_id
 
   def update
     @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to action: :show
     else
-      render :edit
+      render 
     end
   end
 
