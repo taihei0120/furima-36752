@@ -129,33 +129,34 @@
     <ul class='item-lists'>
 
       <% if Item.exists? %>
+        <% @item.each do |item| %>
           <li class='list'>
-            <% @item.each do |item| %>
-            <div class='item-img-content'>
-              <%= link_to image_tag item.image, class: "item-img" %>
+           <%= link_to root_path do %>
+             <div class='item-img-content'>
+               <%= image_tag item.image, class: "item-img" %>
+              
+                  <%# 商品が売れていればsold outを表示しましょう %>
+                  <div class='sold-out'>
+                    <span>Sold Out!!</span>
+                  </div>
+                  <%# //商品が売れていればsold outを表示しましょう %>
 
-              <%# 商品が売れていればsold outを表示しましょう %>
-              <div class='sold-out'>
-                <span>Sold Out!!</span>
-              </div>
-              <%# //商品が売れていればsold outを表示しましょう %>
-
-            </div>
-            <div class='item-info'>
-              <h3 class='item-name'>
-                <%= item.product_name %>
-              </h3>
-              <div class='item-price'>
-                <span><%= item.price %>円<br><%= item.delivery_fee.name %></span>
-                <div class='star-btn'>
-                  <%= image_tag "star.png", class:"star-icon" %>
-                  <span class='star-count'>0</span>
                 </div>
-              </div>
-            </div>
-            <%# end %>
-          <% end %>
-        </li>
+                <div class='item-info'>
+                  <h3 class='item-name'>
+                    <%= item.product_name %>
+                  </h3>
+                  <div class='item-price'>
+                    <span><%= item.price %>円<br><%= item.delivery_fee.name %></span>
+                    <div class='star-btn'>
+                      <%= image_tag "star.png", class:"star-icon" %>
+                      <span class='star-count'>0</span>
+                    </div>
+                  </div>
+                </div>
+            <% end %>
+          </li>
+        <% end %>
       <% end %>
 
       <% unless Item.exists? %>
