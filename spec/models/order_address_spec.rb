@@ -17,7 +17,46 @@ RSpec.describe OrderAddress, type: :model do
     end
 
     context '内容に問題がある場合（異常系）' do
+      it 'postal_codeが空だと保存できないこと' do
+        @order_address.postal_code = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Postal code can't be blank")
+      end
+      it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
+        @order_address.postal_code = '1234567'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+      end
+      it 'delivery_from_idを選択していないと保存できないこと' do
+        @order_address.delivery_from_id = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Delivery from can't be blank")
+      end
+      it 'townが空だと保存できないこと' do
+        @order_address.town = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Town can't be blank")
+      end
+      it 'home_numberが空だと保存できないこと' do
+        @order_address.home_number = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Home number can't be blank")
+      end
+      it 'telephoneが空だと保存できないこと' do
+        @order_address.telephone = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Telephone can't be blank")
+      end
+      it 'user_idが紐付いていないと保存できないこと' do
+        @order_address.user_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが紐付いていないと保存できないこと' do
+        @order_address.item_id = nil
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Item can't be blank")
+      end
     end
-
   end
 end
