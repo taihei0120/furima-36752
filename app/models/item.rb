@@ -19,5 +19,5 @@ class Item < ApplicationRecord
   belongs_to :delivery_fee
   belongs_to :delivery_from
   belongs_to :delivery_day
-  #has_one :order
+  has_one :order
 end
