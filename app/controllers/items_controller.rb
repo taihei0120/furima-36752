@@ -20,16 +20,14 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
   end
 
   def edit
-    if current_user.id != @item.user_id || @item.order != nil
-      redirect_to  action: :index
-    else
-      render :edit
-    end
-
+    unless current_user.id == @item.user_id
+        redirect_to  action: :index
+      else
+        render :edit
+      end
   end
 
   def update
