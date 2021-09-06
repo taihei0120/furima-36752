@@ -5,9 +5,10 @@ FactoryBot.define do
     town                { '港区' }
     home_number         { '1-1' }
     building            { '東京ハイツ' }
-    telephone           { '03-1234-5678' }
+    telephone           { '0312345678' }
     user_id             { 2 }
     item_id             { 2 }
+    token               { 12345678}
   end
 
 end
