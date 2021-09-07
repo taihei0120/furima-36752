@@ -20,9 +20,9 @@ default: &default
 development:
   <<: *default
   database: furima_36752_development
-  username: root
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  socket: /var/lib/mysql/mysql.sock
+  #username: root
+  #password: <%= ENV['DATABASE_PASSWORD'] %>
+  #socket: /var/lib/mysql/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -53,5 +53,6 @@ test:
 production:
   <<: *default
   database: furima_36752_production
-  username: furima_36752
-  password: <%= ENV['FURIMA_36752_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
